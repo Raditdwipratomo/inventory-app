@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Sprout } from "lucide-react";
+import { EditIcon } from "lucide-react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Combobox } from "./ui/combo-box";
@@ -18,6 +18,7 @@ import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import { createPlant, editPlant, getPlantById } from "@/actions/plant.action";
 import toast from "react-hot-toast";
+import ImageUpload from "./ImageUploud";
 
 type Plant = NonNullable<Awaited<ReturnType<typeof getPlantById>>>;
 
@@ -43,7 +44,7 @@ export default function EditDialog({ plant }: EditDialogProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const newPlant = await editPlant(id, formData);
+      const newPlant = await editPlant(plant.id, formData);
       toast.success("Plant created succesfully");
     } catch (error) {
       console.error("error creating plant", error);
@@ -54,10 +55,10 @@ export default function EditDialog({ plant }: EditDialogProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="default" className="ml-auto flex items-center" asChild>
+        <Button variant="secondary" className="ml-auto flex items-center" asChild>
           <span className="cursor-pointer">
-            <Sprout className="w-4 h-4" />
-            Add Plant
+            <EditIcon className="w-4 h-4" />
+            Edit Plant
           </span>
         </Button>
       </AlertDialogTrigger>
@@ -120,7 +121,7 @@ export default function EditDialog({ plant }: EditDialogProps) {
           </div>
 
           {/*Image Upload*/}
-          {/* <div className="py-5">
+          <div className="py-5">
             <ImageUpload
               endpoint="postImage"
               value={formData.imageUrl}
@@ -128,7 +129,7 @@ export default function EditDialog({ plant }: EditDialogProps) {
                 handleChange("imageUrl", url);
               }}
             />
-          </div> */}
+          </div>
 
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

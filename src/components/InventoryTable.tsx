@@ -16,6 +16,8 @@ import { useState } from "react";
 import { getPlants } from "@/actions/plant.action";
 import { useRouter } from "next/navigation";
 import CreateDialog from "./CreateDialog";
+import EditDialog from "./EditDialog";
+import DeleteDialog from "./DeleteDialog";
 const plants = [
   {
     id: "23874932",
@@ -152,8 +154,8 @@ export default function InventoryTable({ plants }: InventoryTableProps) {
                 <TableCell className="font-bold">{plant.stock}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end space-x-4" onClick={(e) => e.stopPropagation()}>
-                    <h1>Edit Button</h1>
-                    <h1>Delete Button</h1>
+                    <EditDialog plant={plant}/>
+                    <DeleteDialog plant={plant}/>
                   </div>
                 </TableCell>
               </TableRow>
