@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
+import Hero from "@/components/Hero";
+import { stackServerApp } from "@/stack";
 
-export default function Home() {
+
+export default function Home() { 
+
   return (
-    <div>Hello World
-      <Button variant="default">Button</Button>
-    </div>
+    
+    <Hero/>
   );
 }
