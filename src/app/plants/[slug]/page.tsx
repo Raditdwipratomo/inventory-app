@@ -4,7 +4,7 @@ import { title } from "process";
 import { stackServerApp } from "@/stack";
 import { SignIn } from "@stackframe/stack";
 
-export async function generateMetaData({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
@@ -19,13 +19,12 @@ export async function generateMetaData({
 }
 
 const page = async ({ params }: { params: { slug: string } }) => {
-  const user = await stackServerApp.getUser()
+  const user = await stackServerApp.getUser();
   const [id] = params.slug.split("--");
   const plant = await getPlantById(id);
 
-
-  if(!user) {
-    return <SignIn/>
+  if (!user) {
+    return <SignIn />;
   }
 
   return (
