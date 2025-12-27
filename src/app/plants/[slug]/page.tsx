@@ -1,6 +1,5 @@
 import { getPlantById } from "@/actions/plant.action";
 import PlantCard from "./PlantCard";
-import { title } from "process";
 import { stackServerApp } from "@/stack";
 import { SignIn } from "@stackframe/stack";
 

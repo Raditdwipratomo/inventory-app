@@ -5,7 +5,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -18,15 +17,7 @@ import { useRouter } from "next/navigation";
 import CreateDialog from "./CreateDialog";
 import EditDialog from "./EditDialog";
 import DeleteDialog from "./DeleteDialog";
-const plants = [
-  {
-    id: "23874932",
-    name: "Snake Plant",
-    category: "Indoor",
-    price: 2,
-    stock: 10,
-  },
-];
+import { Skeleton } from "./ui/skeleton";
 
 type Plant = Awaited<ReturnType<typeof getPlants>>;
 
@@ -122,7 +113,7 @@ export default function InventoryTable({ plants }: InventoryTableProps) {
           value={selectedCategory}
           onChange={(val) => setSelectedCategory(val)}
         />
-        <CreateDialog/>
+        <CreateDialog />
       </div>
 
       <Table>
@@ -153,9 +144,12 @@ export default function InventoryTable({ plants }: InventoryTableProps) {
                 <TableCell>{plant.price}</TableCell>
                 <TableCell className="font-bold">{plant.stock}</TableCell>
                 <TableCell className="text-right">
-                  <div className="flex justify-end space-x-4" onClick={(e) => e.stopPropagation()}>
-                    <EditDialog plant={plant}/>
-                    <DeleteDialog plant={plant}/>
+                  <div
+                    className="flex justify-end space-x-4"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <EditDialog plant={plant} />
+                    <DeleteDialog plant={plant} />
                   </div>
                 </TableCell>
               </TableRow>

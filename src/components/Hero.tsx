@@ -12,7 +12,6 @@ const Hero = () => {
           <Badge
             variant="secondary"
             className="rounded-full py-1 border-border"
-            asChild
           >
             <Link href="#">
               Just released v1.0.0 <ArrowUpRight className="ml-1 size-4" />
